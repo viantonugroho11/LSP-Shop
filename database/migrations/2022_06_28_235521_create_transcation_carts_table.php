@@ -14,7 +14,10 @@ class CreateTranscationCartsTable extends Migration
     public function up()
     {
         Schema::create('transcation_carts', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->string('user_id');
+            $table->string('product_id');
+            $table->string('quantity');
             $table->timestamps();
         });
     }
