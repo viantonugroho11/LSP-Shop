@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tambah Category Artikel</h1>
+            <h1>Create Product</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">General Form</li>
+              <li class="breadcrumb-item active">Create Product</li>
             </ol>
           </div>
         </div>
@@ -31,13 +31,23 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
+              <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Nama</label>
-                    <input name="nama" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Category">
+                    <label for="exampleInputEmail1">Name</label>
+                    <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Category">
                   </div>
+                   <div class="form-group">
+                      <label>Description</label>
+                      <textarea class="isiArtikel @error('detail') is-invalid @enderror" name="description"
+                        style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                      @error('detail')
+                        <div class="alert alert-danger mt-2">
+                          {{ $message }}
+                        </div>
+                      @enderror
+                    </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Icon</label>
                     <div class="input-group">
@@ -69,3 +79,18 @@
     <!-- /.content -->
   </div>
   @endsection
+@section('scriptJs')
+  <!-- Summernote -->
+  <script src="{{ asset('assets/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
+  <script>
+    $(function() {
+      //note
+      $('.isiArtikel').summernote()
+    })
+  </script>
+@endsection
+
+@section('scriptCss')
+  <!-- Summernote -->
+  <link rel="stylesheet" href="{{ asset('assets/backend/plugins/summernote/summernote-bs4.css') }}">
+@endsection
