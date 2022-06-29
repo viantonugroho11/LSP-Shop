@@ -14,7 +14,13 @@ class CreateTranscationsTable extends Migration
     public function up()
     {
         Schema::create('transcations', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->string('va_number');
+            $table->string('status');
+            $table->integer('quantity');
+            $table->string('user_id');
+            $table->integer('total_price');
+            $table->string('pdf');
             $table->timestamps();
         });
     }
