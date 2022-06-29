@@ -17,7 +17,7 @@ class CreateTranscationDetailsTable extends Migration
             $table->uuid('id');
             $table->string('product_id');
             $table->integer('quantity');
-            $table->string('user_id');
+            $table->string('transcation_id');
             $table->timestamps();
         });
     }

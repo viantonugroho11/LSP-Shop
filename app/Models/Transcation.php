@@ -8,4 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Transcation extends Model
 {
     use HasFactory;
+
+    protected $increment = false;
+    protected $fillable = [
+        'id',
+        'user_id',
+        'quantity',
+        'va_number',
+        'total_price',
+        'pdf',
+        'status'
+    ];
+
+    public function getUser()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function getPrice()
+    {
+        return 'Rp. ' . number_format($this->total_price, 0, ',', '.');
+    }
 }
