@@ -34,6 +34,7 @@ class ProductController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+        return view('backend.product.index');
     }
 
     /**

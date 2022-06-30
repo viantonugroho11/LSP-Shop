@@ -27,7 +27,7 @@
             <!-- /.card -->
             <div class="card">
                 <div class="card-header">
-                <a href="{{route('category.create')}}" class="btn btn-sm btn-success">Tambah Data</a>
+                <a href="{{route('admin.category.create')}}" class="btn btn-sm btn-success">Tambah Data</a>
                 </div>
             </div>
             <div class="card">
@@ -140,7 +140,7 @@
         language: {
           processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
         },
-        ajax: "{{ route('category.index') }}",
+        ajax: "{{ route('admin.category.index') }}",
         columns: [
           // {data: 'id', name: 'id'},
           {
