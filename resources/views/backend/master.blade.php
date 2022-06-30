@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard Fajrul Islam - Admin</title>
+  <title>Dashboard LSP SHOP</title>
 
-  <link rel="icon" href="{{ asset('assets/frontend/v1/icon/fajrul-islam.ico') }}">
+  {{-- <link rel="icon" href="{{ asset('assets/frontend/v1/icon/fajrul-islam.ico') }}"> --}}
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -51,17 +51,17 @@
   </div> --}}
 
     <!-- Navbar -->
-    @include('admin.tools.navbar')
+    @include('backend.tools.navbar')
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('admin.tools.sidebar')
+    @include('backend.tools.sidebar')
 
     @include('sweetalert::alert')
     <!-- Content Wrapper. Contains page content -->
     @yield('content')
     <!-- /.content-wrapper -->
-    @include('admin.tools.footer')
+    @include('backend.tools.footer')
 
     <!-- Control Sidebar -->
 

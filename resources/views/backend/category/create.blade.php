@@ -31,12 +31,13 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('admin.category.store')}}" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nama</label>
-                    <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Category">
+                    <input name="name" type="text" class="form-control" id="exampleInputEmail1"
+                      placeholder="Masukan Nama Category">
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -56,4 +57,4 @@
     </section>
     <!-- /.content -->
   </div>
-  @endsection
+@endsection
