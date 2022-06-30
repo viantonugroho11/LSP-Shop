@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('quantity');
             $table->longText('description');
+            $table->string('image')->nullable()->default('null');
             $table->timestamps();
             $table->softDeletes();
             $table->primary('id');
