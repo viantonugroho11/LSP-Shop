@@ -32,6 +32,7 @@ class CategoryController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+        return view('backend.category.index');
     }
 
     /**
