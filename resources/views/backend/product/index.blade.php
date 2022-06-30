@@ -151,10 +151,17 @@
             data: 'slug',
             name: 'slug'
           },
-        //   {
-        //     data: 'icon',
-        //     name: 'icon'
-        //   },
+          {
+            data: 'getImage',
+            name: 'getImage',
+            render: function(data, type, row, meta) {
+              return '<img src="' + data + '" width="100" height="100">';
+            }
+          },
+          {
+            data: 'quantity',
+            name: 'quantity'
+          },
           {
             data: 'action',
             name: 'action',

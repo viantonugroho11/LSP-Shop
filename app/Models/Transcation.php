@@ -9,7 +9,7 @@ class Transcation extends Model
 {
     use HasFactory;
 
-    protected $increment = false;
+    public $incrementing = false;
     protected $fillable = [
         'id',
         'user_id',
