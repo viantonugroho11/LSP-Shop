@@ -81,14 +81,6 @@
 
   <script>
     //message with toastr
-    @if (session()->has('success'))
-
-      toastr.success('{{ session('success') }}', 'BERHASIL!');
-    @elseif
-      (session()->has('error'))
-
-      toastr.error('{{ session('error') }}', 'GAGAL!');
-    @endif
   </script>
   <script type="text/javascript">
     $(function() {
@@ -103,17 +95,25 @@
         columns: [
           // {data: 'id', name: 'id'},
           {
-            data: 'name',
-            name: 'name'
+            data: 'id',
+            name: 'id'
           },
           {
-            data: 'slug',
-            name: 'slug'
+            data: 'status',
+            name: 'status'
           },
-          //   {
-          //     data: 'icon',
-          //     name: 'icon'
-          //   },
+          {
+            data: 'total',
+            name: 'total'
+          },
+          {
+            data: 'address',
+            name: 'address'
+          },
+          {
+            data: 'courier_track_number',
+            name: 'courier_track_number'
+          },
           {
             data: 'action',
             name: 'action',
@@ -126,21 +126,6 @@
     });
   </script>
   <script>
-    //   $(function () {
-    //     $("#example1").DataTable({
-    //       "responsive": true, "lengthChange": false, "autoWidth": false,
-    //       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    //     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    //     $('#example2').DataTable({
-    //       "paging": true,
-    //       "lengthChange": false,
-    //       "searching": false,
-    //       "ordering": true,
-    //       "info": true,
-    //       "autoWidth": false,
-    //       "responsive": true,
-    //     });
-    //   });
   </script>
 @endsection
 

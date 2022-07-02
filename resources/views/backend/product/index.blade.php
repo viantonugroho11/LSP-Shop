@@ -123,10 +123,10 @@
             name: 'book_id'
           },
           {
-            data: 'getImage',
-            name: 'getImage',
+            data: 'image',
+            name: 'image',
             render: function(data, type, row, meta) {
-              return '<img src="' + data + '" width="100" height="100">';
+                return '<img src="./../storage/product/' + data + '" width="100" height="100">';
             }
           },
           {

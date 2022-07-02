@@ -35,6 +35,6 @@ class Product extends Model
     }
     public function getImage()
     {
-        return Storage::url($this->image);
+        return Storage::url('public/product/' . $this->image);
     }
 }
