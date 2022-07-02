@@ -17,8 +17,8 @@ class CreateTranscationsTable extends Migration
             $table->string('id');
             $table->string('va_number')->default('null');
             $table->string('status');
-            // $table->string('transcation_id_third');
             $table->integer('quantity');
+            $table->string('transcation_id')->nullable();
             $table->string('user_id');
             $table->string('address')->nullable();
             $table->integer('total_price')->default(0);

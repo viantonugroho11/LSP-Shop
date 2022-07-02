@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Transcation;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Transcation;
 use App\Models\TranscationCart;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
@@ -30,8 +31,9 @@ class TranscationController extends Controller
         return redirect()->back();
     }
 
-    public function sendTranscation()
+    public function sendTranscation($id)
     {
+        $transaksi = Transcation::where('user_id', auth()->user()->id)->where('id','=',$id)->first();
         
     }
 }
