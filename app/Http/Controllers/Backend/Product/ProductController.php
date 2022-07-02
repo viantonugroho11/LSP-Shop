@@ -66,7 +66,8 @@ class ProductController extends Controller
         // dd($request->all());
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'description' => 'required',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
             'publisher' => 'required|string|max:255',
@@ -78,12 +79,14 @@ class ProductController extends Controller
             'language' => 'required|string|max:255',
         ]);
         $count = Product::count();
-        $sum = $count + 1;
+        $generateRandom = mt_rand(1000000000, 9999999999);
         $product = Product::create([
             'id' => UuidV4::uuid4()->toString(),
             'name' => $request->name,
-            'book_id' => 'BK-' . $sum,
+            'author' => $request->author,
+            'book_id' => 'BK-' . $generateRandom,
             'slug' => Str::slug($request->name),
+            'price' => $request->price,
             'quantity' => $request->quantity,
             'publisher' => $request->publisher,
             'isbn' => $request->isbn,
@@ -93,10 +96,8 @@ class ProductController extends Controller
             'page' => $request->page,
             'language' => $request->language,
             'description' => $request->description,
-            'price' => $request->price,
             'category_id' => $request->category_id,
         ]);
-        // dd($request->all());
         if ($request->file('icon')) {
             $image = $request->file('icon');
             $image->storeAs('public/product', $image->hashName());
@@ -147,21 +148,22 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'publisher' => $request->publisher,
-            'isbn' => $request->isbn,
-            'datePublish' => $request->datePublish,
-            'weight' => $request->weight,
-            'width' => $request->width,
-            'page' => $request->page,
-            'language' => $request->language,
+            'publisher' => 'required|string|max:255',
+            'isbn' => 'required|string|max:255',
+            'datePublish' => 'required|date',
+            'weight' => 'required|numeric',
+            'width' => 'required|numeric',
+            'page' => 'required|numeric',
+            'language' => 'required|string|max:255',
             'category_id' => 'required|numeric',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $product = Product::find($id);
         $product->update([
             'name' => $request->name,
+            'author' => $request->author,
             'description' => $request->description,
             'price' => $request->price,
             'publisher' => $request->publisher,
@@ -182,9 +184,9 @@ class ProductController extends Controller
             ]);
         }
         if ($product) {
-            return redirect()->route('admin.product.index')->with('success', 'Data berhasil diubah');
+            return redirect()->route('backend.product.index')->with('success', 'Data berhasil diubah');
         } else {
-            return redirect()->route('admin.product.index')->with('error', 'Data gagal diubah');
+            return redirect()->route('backend.product.index')->with('error', 'Data gagal diubah');
         }
     }
 

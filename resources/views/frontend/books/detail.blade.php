@@ -38,19 +38,19 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>Kode Buku:</span> TV Series</li>
-                                            <li><span>Kategori:</span> Lerche</li>
-                                            <li><span>Penerbit:</span> Oct 02, 2019 to ?</li>
-                                            <li><span>ISBN:</span> Airing</li>
-                                            <li><span>Bahasa:</span> Action, Adventure, Fantasy, Magic</li>
+                                            <li><span>Kode Buku:</span> {{$product->book_id}}</li>
+                                            <li><span>Kategori:</span> KATEGORI</li>
+                                            <li><span>Penerbit:</span> {{$product->publisher}}</li>
+                                            <li><span>ISBN:</span> {{$product->isbn}}</li>
+                                            <li><span>Bahasa:</span> {{$product->language}}</li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>Tanggal Terbit:</span> 7.31 / 1,515</li>
-                                            <li><span>Halaman:</span> 7.31 / 1,515</li>
-                                            <li><span>Berat:</span> 7.31 / 1,515</li>
-                                            <li><span>Lebar:</span> 8.5 / 161 times</li>
+                                            <li><span>Tanggal Terbit:</span> {{$product->datePublish}}</li>
+                                            <li><span>Halaman:</span> {{$product->page}} halaman</li>
+                                            <li><span>Berat:</span> {{$product->weight}} kg</li>
+                                            <li><span>Lebar:</span> {{$product->width}} cm</li>
                                         </ul>
                                     </div>
                                 </div>

@@ -30,6 +30,10 @@
                     <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Buku">
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Penulis</label>
+                    <input name="author" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Penulis">
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputEmail1">Harga</label>
                     <input name="price" type="number" class="form-control" id="exampleInputEmail1" placeholder="Masukan Harga Buku">
                   </div>
