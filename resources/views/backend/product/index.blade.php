@@ -33,8 +33,8 @@
                   <thead>
                     <tr>
                       {{-- <th>No</th> --}}
-                      <th>Judul Buku</th>
                       <th>Kode Buku</th>
+                      <th>Judul Buku</th>
                       <th>Cover Buku</th>
                       <th>Jumlah Buku</th>
                       <th>Action</th>
@@ -102,18 +102,18 @@
         columns: [
           // {data: 'id', name: 'id'},
           {
-            data: 'name',
-            name: 'name'
-          },
-          {
             data: 'book_id',
             name: 'book_id'
+          },
+          {
+            data: 'name',
+            name: 'name'
           },
           {
             data: 'image',
             name: 'image',
             render: function(data, type, row, meta) {
-                return '<img src="./../storage/product/' + data + '" width="100" height="100">';
+                return '<img src="./../storage/product/' + data + '" width="100" height="150">';
             }
           },
           {

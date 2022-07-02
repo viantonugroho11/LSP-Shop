@@ -21,7 +21,7 @@
             <div class="anime__details__content">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="anime__details__pic set-bg" data-setbg="img/anime/details-pic.jpg">
+                        <div class="anime__details__pic set-bg" data-setbg="{{$product->getImage()}}">
                             <div class="comment"><i class="fa fa-cubes"></i> 11</div>
                             <div class="view"><i class="fa fa-cart-plus"></i> 9141</div>
                         </div>
@@ -33,7 +33,7 @@
                                 <h5 class="text-white mb-1">{{$product->author}}</h5>
                                 <span>{{$product->getPrice()}}</span>
                             </div>
-                            <p>{{{$product->description}}}</p>
+                            <p>{{$product->description}}</p>
                             <div class="anime__details__widget">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
