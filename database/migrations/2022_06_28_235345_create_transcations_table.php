@@ -14,13 +14,18 @@ class CreateTranscationsTable extends Migration
     public function up()
     {
         Schema::create('transcations', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->string('va_number');
+            $table->string('id');
+            $table->string('va_number')->default('null');
             $table->string('status');
+            // $table->string('transcation_id_third');
             $table->integer('quantity');
             $table->string('user_id');
-            $table->integer('total_price');
-            $table->string('pdf');
+            $table->string('address')->nullable();
+            $table->integer('total_price')->default(0);
+            $table->string('pdf')->default('null');
+            $table->string('courier')->nullable();
+            $table->string('courier_service')->nullable();
+            $table->string('courier_tracking_number')->nullable();
             $table->timestamps();
         });
     }

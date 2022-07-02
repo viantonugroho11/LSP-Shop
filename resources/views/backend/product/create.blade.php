@@ -27,7 +27,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Add Category</h3>
+                <h3 class="card-title">Add Buku</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -36,8 +36,23 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Category">
+                    <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Buku">
                   </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Price</label>
+                    <input name="price" type="number" class="form-control" id="exampleInputEmail1" placeholder="Masukan Harga Buku">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Quantity</label>
+                    <input name="quantity" type="number" class="form-control" id="exampleInputEmail1" placeholder="Masukan Jumlah Buku">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Category</label>
+                    <select name="category_id" class="form-control">
+                      @foreach ($category as $item)
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                      @endforeach
+                    </select>
                    <div class="form-group">
                       <label>Description</label>
                       <textarea class="isiArtikel @error('detail') is-invalid @enderror" name="description"

@@ -7,6 +7,9 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Rfc4122\UuidV4;
 
 class ProductController extends Controller
 {
@@ -17,15 +20,18 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        // $product = Product::all();
+        // dd($product);
         if ($request->ajax()) {
-            $product = Product::select('*');
+            $product = Product::all();
             return DataTables::of($product)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
+
                     //form delete
-                    $formdelete = '<form action="' . route('product.destroy', $row->id) . '" method="POST">' . csrf_field() . method_field("DELETE") . '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')"><i class="fa fa-trash"></i> Hapus</button></form>';
+                    $formdelete = '<form action="' . route('admin.product.destroy', $row->id) . '" method="POST">' . csrf_field() . method_field("DELETE") . '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')"><i class="fa fa-trash"></i> Hapus</button></form>';
                     //form edit
-                    $formedit = '<a href="' . route('product.edit', $row->id) . '" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>';
+                    $formedit = '<a href="' . route('admin.product.edit', $row->id) . '" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>';
                     $btn = $formedit . '
                         <br/>
                         ' . $formdelete . '';
@@ -34,6 +40,7 @@ class ProductController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+        // dd(User::all());
         return view('backend.product.index');
     }
 
@@ -60,26 +67,33 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
             'category_id' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $count = Product::count();
+        $sum = $count + 1;
         $product = Product::create([
+            'id' => UuidV4::uuid4()->toString(),
             'name' => $request->name,
+            'book_id' => 'BK-' . $sum,
+            'slug' => Str::slug($request->name),
+            'quantity' => $request->quantity,
             'description' => $request->description,
             'price' => $request->price,
             'category_id' => $request->category_id,
         ]);
-        if($request->hasFile('image')){
-            $image = $request->file('image');
+        // dd($request->all());
+        if ($request->file('icon')) {
+            $image = $request->file('icon');
             $image->storeAs('public/product', $image->hashName());
             $product->update([
                 'image' => $image->hashName(),
             ]);
         }
-        if($product){
-            return redirect()->route('product.index')->with('success', 'Data berhasil ditambahkan');
-        }else{
-            return redirect()->route('product.index')->with('error', 'Data gagal ditambahkan');
+        if ($product) {
+            return redirect()->route('admin.product.index')->with('success', 'Data berhasil ditambahkan');
+        } else {
+            return redirect()->route('admin.product.index')->with('error', 'Data gagal ditambahkan');
         }
     }
 
@@ -130,17 +144,17 @@ class ProductController extends Controller
             'price' => $request->price,
             'category_id' => $request->category_id,
         ]);
-        if($request->hasFile('image')){
+        if ($request->file('icon')) {
             Storage::delete('public/product/' . $product->image);
-            $image = $request->file('image');
+            $image = $request->file('icon');
             $image->storeAs('public/product', $image->hashName());
             $product->update([
                 'image' => $image->hashName(),
             ]);
         }
-        if($product){
+        if ($product) {
             return redirect()->route('product.index')->with('success', 'Data berhasil diubah');
-        }else{
+        } else {
             return redirect()->route('product.index')->with('error', 'Data gagal diubah');
         }
     }
@@ -154,13 +168,13 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        if($product->image){
+        if ($product->image) {
             Storage::delete('public/product/' . $product->image);
         }
         $product->delete();
-        if($product){
+        if ($product) {
             return redirect()->route('product.index')->with('success', 'Data berhasil dihapus');
-        }else{
+        } else {
             return redirect()->route('product.index')->with('error', 'Data gagal dihapus');
         }
     }

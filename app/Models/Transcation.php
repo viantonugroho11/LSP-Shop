@@ -9,15 +9,19 @@ class Transcation extends Model
 {
     use HasFactory;
 
-    protected $increment = false;
+    public $incrementing = false;
     protected $fillable = [
         'id',
         'user_id',
+        'address',
         'quantity',
         'va_number',
         'total_price',
         'pdf',
-        'status'
+        'status'.
+        'courier',
+        'courier_service',
+        'courier_tracking_number',
     ];
 
     public function getUser()
