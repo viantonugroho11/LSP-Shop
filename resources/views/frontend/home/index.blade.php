@@ -21,7 +21,8 @@
       <div class="row">
         <div class="col-lg-12">
           @foreach ($productlist as $itemC)
-            <div class="trending__product">
+           @if(empty($itemP))
+           <div class="trending__product">
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
                   <div class="section-title">
@@ -30,7 +31,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                   <div class="btn__all">
-                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                    <a href="{{route('books.category', $itemC->slug)}}" class="primary-btn">View All <span class="arrow_right"></span></a>
                   </div>
                 </div>
               </div>
@@ -55,6 +56,7 @@
                 @endforeach
               </div>
             </div>
+           @endif
           @endforeach
         </div>
       </div>
