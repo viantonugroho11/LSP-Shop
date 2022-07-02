@@ -13,11 +13,7 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="{{route('mainpage')}}">Homepage</a></li>
-<<<<<<< HEAD
                                 <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
-=======
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
->>>>>>> 89db0aba44cd27ccaa16579d6d7c284a62112a26
                                     <ul class="dropdown">
                                         @foreach ($categorylist as $item)
                                         <li><a href="{{route('books.category',$item->slug)}}">{{$item->name}}</a></li>

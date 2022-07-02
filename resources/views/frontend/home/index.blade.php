@@ -70,13 +70,8 @@
                     <div class="product__item">
                       <div class="product__item__pic set-bg" data-setbg="{{$itemP->getImage()}}">
                         {{-- <div class="ep">18 / 18</div> --}}
-<<<<<<< HEAD
                         <div class="comment"><i class="fa fa-comments"></i> {{$itemP->getPrice()}}</div>
                         <div class="view"><i class="fa fa-eye"></i> {{$itemP->quantity}}</div>
-=======
-                        <div class="comment"><i class="fa fa-comments"></i> {{$itemP->getPrice() }}</div>
-                        <div class="view"><i class="fa fa-eye"></i> {{$itemP->quantitiy}}</div>
->>>>>>> 89db0aba44cd27ccaa16579d6d7c284a62112a26
                       </div>
                       <div class="product__item__text">
                         <ul>
