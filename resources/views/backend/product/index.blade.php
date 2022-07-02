@@ -47,45 +47,16 @@
                     <tr>
                       {{-- <th>No</th> --}}
                       <th>Nama</th>
-                      <th>Slug</th>
+                      <th>Kode Book</th>
                       <th>Sampul</th>
                       <th>Quantity</th>
                       <th>Action</th>
                     </tr>
                   </thead>
-                  {{-- <tbody>
-                    @php
-                        $i=1;
-                    @endphp
-                    @forelse ($datapura as $row)
-                    <tr>
-                      <td>{{$i++}}</td>
-
-                      <td>{{$row->nama_pura}}</td>
-                      <td>{{$row->jenis_nama}}</td>
-                      <td>{{$row->kondisi_nama}}</td>
-                      <td>{{$row->status_tanah_nama}}</td>
-                      <td>{{$row->provinsi_nama}}</td>
-                      <td>{{$row->kota_nama}}</td>
-                      <td>
-                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('datapura.destroy', $row->id) }}" method="POST">
-                            <a href="{{ route('datapura.edit', $row->id) }}" class="btn btn-sm btn-success">Edit</a>
-
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                        </form>
-                      </td>
-                    </tr>
-                    @empty
-
-                    @endforelse
-                  </tbody> --}}
                   <tfoot>
                   </tfoot>
                 </table>
                 <br />
-                {{-- {!! $datapura->links('pagination::bootstrap-4') !!} --}}
               </div>
               <!-- /.card-body -->
             </div>
@@ -148,14 +119,14 @@
             name: 'name'
           },
           {
-            data: 'slug',
-            name: 'slug'
+            data: 'book_id',
+            name: 'book_id'
           },
           {
-            data: 'getImage',
-            name: 'getImage',
+            data: 'image',
+            name: 'image',
             render: function(data, type, row, meta) {
-              return '<img src="' + data + '" width="100" height="100">';
+                return '<img src="./../storage/product/' + data + '" width="100" height="100">';
             }
           },
           {

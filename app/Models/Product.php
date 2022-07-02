@@ -16,6 +16,7 @@ class Product extends Model
     protected  $fillable = [
         'id',
         'name',
+        'book_id',
         'slug',
         'description',
         'price',
@@ -34,6 +35,6 @@ class Product extends Model
     }
     public function getImage()
     {
-        return Storage::url($this->image);
+        return Storage::url('public/product/' . $this->image);
     }
 }

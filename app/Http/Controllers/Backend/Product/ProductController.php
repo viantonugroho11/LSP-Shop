@@ -40,6 +40,7 @@ class ProductController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+        // dd(User::all());
         return view('backend.product.index');
     }
 
@@ -69,25 +70,29 @@ class ProductController extends Controller
             'quantity' => 'required|numeric',
             'category_id' => 'required|numeric',
         ]);
+        $count = Product::count();
+        $sum = $count + 1;
         $product = Product::create([
-            'id'=>UuidV4::uuid4()->toString(),
+            'id' => UuidV4::uuid4()->toString(),
             'name' => $request->name,
-            'slug'=> Str::slug($request->name),
+            'book_id' => 'BK-' . $sum,
+            'slug' => Str::slug($request->name),
             'quantity' => $request->quantity,
             'description' => $request->description,
             'price' => $request->price,
             'category_id' => $request->category_id,
         ]);
-        if($request->hasFile('image')){
-            $image = $request->file('image');
+        // dd($request->all());
+        if ($request->file('icon')) {
+            $image = $request->file('icon');
             $image->storeAs('public/product', $image->hashName());
             $product->update([
                 'image' => $image->hashName(),
             ]);
         }
-        if($product){
+        if ($product) {
             return redirect()->route('admin.product.index')->with('success', 'Data berhasil ditambahkan');
-        }else{
+        } else {
             return redirect()->route('admin.product.index')->with('error', 'Data gagal ditambahkan');
         }
     }
@@ -139,17 +144,17 @@ class ProductController extends Controller
             'price' => $request->price,
             'category_id' => $request->category_id,
         ]);
-        if($request->hasFile('image')){
+        if ($request->file('icon')) {
             Storage::delete('public/product/' . $product->image);
-            $image = $request->file('image');
+            $image = $request->file('icon');
             $image->storeAs('public/product', $image->hashName());
             $product->update([
                 'image' => $image->hashName(),
             ]);
         }
-        if($product){
+        if ($product) {
             return redirect()->route('product.index')->with('success', 'Data berhasil diubah');
-        }else{
+        } else {
             return redirect()->route('product.index')->with('error', 'Data gagal diubah');
         }
     }
@@ -163,13 +168,13 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        if($product->image){
+        if ($product->image) {
             Storage::delete('public/product/' . $product->image);
         }
         $product->delete();
-        if($product){
+        if ($product) {
             return redirect()->route('product.index')->with('success', 'Data berhasil dihapus');
-        }else{
+        } else {
             return redirect()->route('product.index')->with('error', 'Data gagal dihapus');
         }
     }
