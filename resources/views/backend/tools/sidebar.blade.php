@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
       {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
         style="opacity: .8"> --}}
-      <span class="brand-text font-weight-light">Administrasi Book Store</span>
+      <span class="brand-text font-weight-light">Administrasi Toko Buku</span>
     </a>
 
     <!-- Sidebar -->
@@ -49,7 +49,7 @@
             <a href="{{route('admin.category.index')}}" class="nav-link @if (request()->is('admin/category*')) active @endif">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Category
+                Kategori Buku
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
@@ -58,7 +58,7 @@
             <a href="{{route('admin.product.index')}}" class="nav-link @if (request()->is('admin/product*')) active @endif">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Product
+                Daftar Buku
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
@@ -67,7 +67,7 @@
             <a href="{{route('admin.transcation.index')}}" class="nav-link @if (request()->is('admin/transction*')) active @endif">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Transcation
+                Transaksi
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
@@ -76,7 +76,7 @@
             <a href="" class="nav-link @if (request()->is('admin/report*')) active @endif">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Report
+                Report Transaksi
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>

@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tambah Buku</h1>
+            <h1>Ubah Data Buku</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -103,10 +103,7 @@
                   </div>
                 </div>
                 <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
+                <button type="submit" class="btn btn-primary">Ubah</button>
               </form>
             </div>
             <!-- /.card -->

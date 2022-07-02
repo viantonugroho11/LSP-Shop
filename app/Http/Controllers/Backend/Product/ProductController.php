@@ -146,35 +146,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'publisher' => 'required|string|max:255',
-            'isbn' => 'required|string|max:255',
-            'datePublish' => 'required|date',
-            'weight' => 'required|numeric',
-            'width' => 'required|numeric',
-            'page' => 'required|numeric',
-            'language' => 'required|string|max:255',
-            'category_id' => 'required|numeric',
-        ]);
-        $product = Product::find($id);
-        $product->update([
-            'name' => $request->name,
-            'author' => $request->author,
-            'description' => $request->description,
-            'price' => $request->price,
-            'publisher' => $request->publisher,
-            'isbn' => $request->isbn,
-            'datePublish' => $request->datePublish,
-            'weight' => $request->weight,
-            'width' => $request->width,
-            'page' => $request->page,
-            'language' => $request->language,
-            'category_id' => $request->category_id,
-        ]);
+        $data = $request->all();
+        $product = Product::findOrFail($id);
+        $product->update($data);
         if ($request->file('icon')) {
             Storage::delete('public/product/' . $product->image);
             $image = $request->file('icon');
@@ -184,9 +158,9 @@ class ProductController extends Controller
             ]);
         }
         if ($product) {
-            return redirect()->route('backend.product.index')->with('success', 'Data berhasil diubah');
+            return redirect()->route('admin.product.index')->with('success', 'Data berhasil diubah');
         } else {
-            return redirect()->route('backend.product.index')->with('error', 'Data gagal diubah');
+            return redirect()->route('admin.product.index')->with('error', 'Data gagal diubah');
         }
     }
 
