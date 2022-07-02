@@ -21,7 +21,6 @@
       <div class="row">
         <div class="col-lg-12">
           @foreach ($productlist as $itemC)
-           @if(empty($itemP))
            <div class="trending__product">
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
@@ -40,9 +39,8 @@
                   <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="product__item">
                       <div class="product__item__pic set-bg" data-setbg="{{$itemP->getImage()}}">
-                        {{-- <div class="ep">18 / 18</div> --}}
-                        <div class="comment"><i class="fa fa-comments"></i> {{$itemP->getPrice()}}</div>
-                        <div class="view"><i class="fa fa-eye"></i> {{$itemP->quantity}}</div>
+                        <div class="comment"><i class="fa fa-shopping-cart"></i> {{$itemP->getPrice()}}</div>
+                        <div class="view"><i class="fa fa-cube"></i> {{$itemP->quantity}}</div>
                       </div>
                       <div class="product__item__text">
                         <ul>
@@ -50,13 +48,13 @@
                           {{-- <li>Movie</li> --}}
                         </ul>
                         <h5><a href="{{route('books.detail', $itemP->slug)}}">{{$itemP->name}}</a></h5>
+                        <span class="d-inline-block text-truncate text-white" style="max-width: 300px;"><small>{{strip_tags($itemP->description)}}</small></span>
                       </div>
                     </div>
                   </div>
                 @endforeach
               </div>
             </div>
-           @endif
           @endforeach
         </div>
       </div>
