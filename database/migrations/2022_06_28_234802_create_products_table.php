@@ -21,6 +21,13 @@ class CreateProductsTable extends Migration
             $table->integer('category_id');
             $table->integer('price');
             $table->integer('quantity');
+            $table->string('publisher');
+            $table->string('isbn');
+            $table->date('datePublish');
+            $table->integer('weight');
+            $table->integer('width');
+            $table->integer('page');
+            $table->string('language');
             $table->longText('description');
             $table->string('image')->nullable()->default('null');
             $table->timestamps();
