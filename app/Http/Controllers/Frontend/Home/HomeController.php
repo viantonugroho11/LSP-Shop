@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         $categorylist = Category::all();
         $productlatest = Product::latest()->limit(5);
-        
-        return view('frontend.home.index');
+        $productlist = Category::with('getProducts')->get();
+        return view('frontend.home.index', compact('categorylist', 'productlatest', 'productlist'));
     }
 }
