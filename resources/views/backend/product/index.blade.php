@@ -47,7 +47,7 @@
                     <tr>
                       {{-- <th>No</th> --}}
                       <th>Nama</th>
-                      <th>Slug</th>
+                      <th>Kode Book</th>
                       <th>Sampul</th>
                       <th>Quantity</th>
                       <th>Action</th>
@@ -119,8 +119,8 @@
             name: 'name'
           },
           {
-            data: 'slug',
-            name: 'slug'
+            data: 'book_id',
+            name: 'book_id'
           },
           {
             data: 'getImage',
