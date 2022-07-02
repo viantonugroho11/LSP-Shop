@@ -11,8 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categorylist = Category::all();
-        $productlatest = Product::latest()->limit(5);
+        $categorylist = Category::limit(5)->get();
+        $productlatest = Product::latest()->limit(5)->get();
         $productlist = Category::with('getProducts')->get();
         return view('frontend.home.index', compact('categorylist', 'productlatest', 'productlist'));
     }
