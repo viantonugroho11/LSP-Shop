@@ -14,13 +14,13 @@ class ProductController extends Controller
         $categorylist = Category::limit(5)->get();
         $productlatest = Product::latest()->limit(5)->get();
         $product = Product::paginate(20);
-        return view('frontend.product.index', compact('categorylist', 'productlatest', 'product'));
+        return view('frontend.books.index', compact('categorylist', 'productlatest', 'product'));
     }
     public function show($id)
     {
         $categorylist = Category::limit(5)->get();
         $productlatest = Product::latest()->limit(5)->get();
         $product = Product::find($id);
-        return view('frontend.product.show', compact('categorylist', 'productlatest', 'product'));
+        return view('frontend.books.detail', compact('categorylist', 'productlatest', 'product'));
     }
 }
