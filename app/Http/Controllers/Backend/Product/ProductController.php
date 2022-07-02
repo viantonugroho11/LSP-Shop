@@ -63,6 +63,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
@@ -75,7 +76,6 @@ class ProductController extends Controller
             'width' => 'required|numeric',
             'page' => 'required|numeric',
             'language' => 'required|string|max:255',
-            'category_id' => 'required|numeric',
         ]);
         $count = Product::count();
         $sum = $count + 1;
@@ -130,7 +130,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $product = Product::where('id','=', $id)->first();
+        // dd($product);
         $category = Category::all();
         return view('backend.product.edit', compact('product', 'category'));
     }
@@ -181,9 +182,9 @@ class ProductController extends Controller
             ]);
         }
         if ($product) {
-            return redirect()->route('product.index')->with('success', 'Data berhasil diubah');
+            return redirect()->route('admin.product.index')->with('success', 'Data berhasil diubah');
         } else {
-            return redirect()->route('product.index')->with('error', 'Data gagal diubah');
+            return redirect()->route('admin.product.index')->with('error', 'Data gagal diubah');
         }
     }
 
@@ -201,9 +202,9 @@ class ProductController extends Controller
         }
         $product->delete();
         if ($product) {
-            return redirect()->route('product.index')->with('success', 'Data berhasil dihapus');
+            return redirect()->route('admin.product.index')->with('success', 'Data berhasil dihapus');
         } else {
-            return redirect()->route('product.index')->with('error', 'Data gagal dihapus');
+            return redirect()->route('admin.product.index')->with('error', 'Data gagal dihapus');
         }
     }
 }

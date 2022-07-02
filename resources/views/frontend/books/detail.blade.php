@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="{{route('mainpage')}}"><i class="fa fa-home"></i>Home</a>
-                        <span>{{$product->name}}</span>
+                        <span></span>
                     </div>
                 </div>
             </div>
@@ -29,11 +29,11 @@
                     <div class="col-lg-9">
                         <div class="anime__details__text">
                             <div class="anime__details__title">
-                                <h3>{{$product->name}}</h3>
+                                <h3></h3>
                                 <span>NAMA PENGARANG</span>
-                                <span>Rp. {{ number_format($product->price,2,',','.') }}</span>
+                                <span>{{$product->getPrice()}}</span>
                             </div>
-                            <p>{{$product->description}}</p>
+                            <p style="background-color: white">{!! $product->description !!}</p>
                             <div class="anime__details__widget">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">

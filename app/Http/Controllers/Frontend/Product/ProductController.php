@@ -13,10 +13,10 @@ class ProductController extends Controller
     {
         $categorylist = Category::limit(5)->get();
         $productlatest = Product::latest()->limit(5)->get();
-        $product = Product::find($id);
+        $product = Product::with('getCategory')->where('slug', $id)->first();
         return view('frontend.books.detail', compact('categorylist', 'productlatest', 'product'));
     }
-    
+
     public function category($id)
     {
         $categorylist = Category::limit(5)->get();
