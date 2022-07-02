@@ -45,4 +45,24 @@ class Product extends Model
     {
         return Storage::url('public/product/' . $this->image);
     }
+    public function getQuantity()
+    {
+        return $this->quantity . ' pcs';
+    }
+    public function getDatePublish()
+    {
+        return date('d F Y', strtotime($this->datePublish));
+    }
+    public function getWeight()
+    {
+        return $this->weight . ' g';
+    }
+    public function getWidth()
+    {
+        return $this->width . ' cm';
+    }
+    public function getPage()
+    {
+        return $this->page . ' pages';
+    }
 }
