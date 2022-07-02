@@ -14,6 +14,11 @@
                             <ul>
                                 <li class="active"><a href="./index.html">Homepage</a></li>
                                 <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        @foreach ($categorylist as $item)
+                                        <li><a href="{{route('books.category',$item->slug)}}">{{$item->name}}</a></li>
+                                        @endforeach
+                                    </ul>
                                 </li>
                             </ul>
                         </nav>
