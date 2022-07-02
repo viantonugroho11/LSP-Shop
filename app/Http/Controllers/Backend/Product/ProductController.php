@@ -40,6 +40,7 @@ class ProductController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+        // dd(User::all());
         return view('backend.product.index');
     }
 
