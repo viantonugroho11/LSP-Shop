@@ -29,33 +29,4 @@ class TranscationController extends Controller
         }
         return redirect()->back();
     }
-    // {
-    //     $product = Product::find($request->id);
-    //     $cart = session()->get('cart');
-    //     if (!$cart) {
-    //         $cart = [
-    //             $request->id => [
-    //                 'name' => $product->name,
-    //                 'quantity' => $request->quantity,
-    //                 'price' => $product->price,
-    //                 'photo' => $product->photo,
-    //             ]
-    //         ];
-    //         session()->put('cart', $cart);
-    //         return response()->json(['success' => true]);
-    //     }
-    //     if (isset($cart[$request->id])) {
-    //         $cart[$request->id]['quantity'] += $request->quantity;
-    //         session()->put('cart', $cart);
-    //         return response()->json(['success' => true]);
-    //     }
-    //     $cart[$request->id] = [
-    //         'name' => $product->name,
-    //         'quantity' => $request->quantity,
-    //         'price' => $product->price,
-    //         'photo' => $product->photo,
-    //     ];
-    //     session()->put('cart', $cart);
-    //     return response()->json(['success' => true]);
-    // }
 }

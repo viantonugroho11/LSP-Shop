@@ -18,10 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class,'index'])->name('mainpage');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/',[HomeController::class,'index'])->name('mainpage');
+Route::get('/category/{id}',[FrontendProductController::class, 'category'])->name('books.category');
 Route::get('/detail/{id}', [FrontendProductController::class, 'show'])->name('books.detail');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('category', CategoryController::class);
