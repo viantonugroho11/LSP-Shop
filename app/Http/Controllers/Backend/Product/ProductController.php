@@ -63,6 +63,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'author' => 'required|string|max:255',
@@ -76,7 +77,6 @@ class ProductController extends Controller
             'width' => 'required|numeric',
             'page' => 'required|numeric',
             'language' => 'required|string|max:255',
-            'category_id' => 'required|numeric',
         ]);
         $count = Product::count();
         $generateRandom = mt_rand(1000000000, 9999999999);
@@ -131,7 +131,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $product = Product::where('id','=', $id)->first();
+        // dd($product);
         $category = Category::all();
         return view('backend.product.edit', compact('product', 'category'));
     }
@@ -203,9 +204,9 @@ class ProductController extends Controller
         }
         $product->delete();
         if ($product) {
-            return redirect()->route('backend.product.index')->with('success', 'Data berhasil dihapus');
+            return redirect()->route('admin.product.index')->with('success', 'Data berhasil dihapus');
         } else {
-            return redirect()->route('backend.product.index')->with('error', 'Data gagal dihapus');
+            return redirect()->route('admin.product.index')->with('error', 'Data gagal dihapus');
         }
     }
 }

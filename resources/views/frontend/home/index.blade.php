@@ -48,7 +48,7 @@
                           <li>{{$itemP->book_id}}</li>
                           {{-- <li>Movie</li> --}}
                         </ul>
-                        <h5><a href="{{route('books.detail', $itemP->id)}}">{{$itemP->name}}</a></h5>
+                        <h5><a href="{{route('books.detail', $itemP->slug)}}">{{$itemP->name}}</a></h5>
                       </div>
                     </div>
                   </div>
