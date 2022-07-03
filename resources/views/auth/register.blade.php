@@ -87,18 +87,18 @@
                         <form method="POST" action="{{ route('register') }}">
                         @csrf
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
+                                <input type="email" name="name" placeholder="Email address">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Your Name">
+                                <input type="text" name="email" placeholder="Your Name">
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="password" name="password" placeholder="Password">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
+                            <button type="submit" class="site-btn">Register</button>
                         </form>
                         <h5>Already have an account? <a href="{{route('login')}}">Log In!</a></h5>
                     </div>
