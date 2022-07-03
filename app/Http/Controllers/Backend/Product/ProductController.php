@@ -146,9 +146,35 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $product = Product::findOrFail($id);
-        $product->update($data);
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'publisher' => 'required|string|max:255',
+            'isbn' => 'required|string|max:255',
+            'datePublish' => 'required|date',
+            'weight' => 'required|numeric',
+            'width' => 'required|numeric',
+            'page' => 'required|numeric',
+            'language' => 'required|string|max:255',
+        ]);
+        $product = Product::find($id);
+        $product->update([
+            'name' => $request->name,
+            'author' => $request->author,
+            'description' => $request->description,
+            'price' => $request->price,
+            'publisher' => $request->publisher,
+            'isbn' => $request->isbn,
+            'datePublish' => $request->datePublish,
+            'weight' => $request->weight,
+            'width' => $request->width,
+            'page' => $request->page,
+            'language' => $request->language,
+            'category_id' => $request->category_id,
+        ]);
         if ($request->file('icon')) {
             Storage::delete('public/product/' . $product->image);
             $image = $request->file('icon');

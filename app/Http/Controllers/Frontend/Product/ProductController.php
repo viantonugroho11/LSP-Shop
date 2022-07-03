@@ -19,7 +19,34 @@ class ProductController extends Controller
 
     public function category($id)
     {
+        //  $item_detail1 = array(
+        //     array(
+        //         'id' => 'a1',
+        //         'price' => 94000,
+        //         'quantity' => 1,
+        //         'name' => "Apple"
+        //     ),
+        // );
+        // $item_detail2 = array(
+        //     array(
+        //         'id' => 'a1',
+        //         'price' => 94000,
+        //         'quantity' => 1,
+        //         'name' => "Apple"
+        //     ),
+        // );
+        //foreach make array
+        // foreach ($item_detail1 as $item) {
+        //     $item_detail[] = $item;
+        // }
+        // dd($item_detail);
+        // $item_details=array(
+        //     $item_detail1,$item_detail2
+        // );
+        // dd($item_details);
         $categorylist = Category::limit(5)->get();
+
+
         $productlatest = Product::latest()->limit(5)->get();
         $category=Category::where('slug', $id)->first();
         $product = Product::where('category_id', $category->id)->paginate(20);
