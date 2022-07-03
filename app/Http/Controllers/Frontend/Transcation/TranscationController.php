@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Transcation;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Transcation;
 use App\Models\TranscationCart;
 use App\Models\TranscationDetail;
@@ -15,6 +16,14 @@ use Ramsey\Uuid\Uuid;
 
 class TranscationController extends Controller
 {
+    public function index($id)
+    {
+        $categorylist = Category::limit(5)->get();
+        $productlatest = Product::latest()->limit(5)->get();
+        $product = Product::with('getCategory')->where('slug', $id)->first();
+        return view('frontend.cart.index', compact('categorylist', 'productlatest', 'product'));
+    }
+
     public function addCart(Request $request,$id)
     {
         $productId = Product::where('slug', $id)->first();
