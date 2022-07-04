@@ -7,13 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Category</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Category</li>
-            </ol>
+            <h1>Data Kategori</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -26,15 +20,8 @@
           <div class="col-12">
             <!-- /.card -->
             <div class="card">
-                <div class="card-header">
-                <a href="{{route('admin.category.create')}}" class="btn btn-sm btn-success">Tambah Data</a>
-                </div>
-            </div>
-            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Category</h3>
-                {{-- <br/> --}}
-                {{-- <a href="{{route('DataPura.create')}}" class="btn btn-sm btn-success">Tambah Data</a> --}}
+                <a href="{{route('admin.category.create')}}" class="btn btn-sm btn-success">Tambah Kategori</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

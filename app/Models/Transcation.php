@@ -12,6 +12,7 @@ class Transcation extends Model
     public $incrementing = false;
     protected $fillable = [
         'id',
+        'transaction_id',
         'user_id',
         'address',
         'quantity',

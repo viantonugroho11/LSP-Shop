@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -36,5 +38,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function showLoginForm()
+    {
+        $categorylist = Category::limit(5)->get();
+        $productlatest = Product::latest()->limit(5)->get();
+        return view('auth.login', compact('categorylist', 'productlatest'));
+        // return view('auth.login');
     }
 }

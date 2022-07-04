@@ -7,13 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Product</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Product</li>
-            </ol>
+            <h1>Data Buku</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -26,15 +20,8 @@
           <div class="col-12">
             <!-- /.card -->
             <div class="card">
-                <div class="card-header">
-                <a href="{{route('admin.product.create')}}" class="btn btn-sm btn-success">Tambah Data</a>
-                </div>
-            </div>
-            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Product</h3>
-                {{-- <br/> --}}
-                {{-- <a href="{{route('DataPura.create')}}" class="btn btn-sm btn-success">Tambah Data</a> --}}
+                <a href="{{route('admin.product.create')}}" class="btn btn-sm btn-success">Tambah Buku</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -46,10 +33,10 @@
                   <thead>
                     <tr>
                       {{-- <th>No</th> --}}
-                      <th>Nama</th>
-                      <th>Kode Book</th>
-                      <th>Sampul</th>
-                      <th>Quantity</th>
+                      <th>Kode Buku</th>
+                      <th>Judul Buku</th>
+                      <th>Cover Buku</th>
+                      <th>Jumlah Buku</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -115,18 +102,18 @@
         columns: [
           // {data: 'id', name: 'id'},
           {
-            data: 'name',
-            name: 'name'
-          },
-          {
             data: 'book_id',
             name: 'book_id'
+          },
+          {
+            data: 'name',
+            name: 'name'
           },
           {
             data: 'image',
             name: 'image',
             render: function(data, type, row, meta) {
-                return '<img src="./../storage/product/' + data + '" width="100" height="100">';
+                return '<img src="./../storage/product/' + data + '" width="100" height="150">';
             }
           },
           {

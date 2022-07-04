@@ -63,26 +63,41 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'description' => 'required',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
-            'category_id' => 'required|numeric',
+            'publisher' => 'required|string|max:255',
+            'isbn' => 'required|string|max:255',
+            'datePublish' => 'required|date',
+            'weight' => 'required|numeric',
+            'width' => 'required|numeric',
+            'page' => 'required|numeric',
+            'language' => 'required|string|max:255',
         ]);
         $count = Product::count();
-        $sum = $count + 1;
+        $generateRandom = mt_rand(1000000000, 9999999999);
         $product = Product::create([
             'id' => UuidV4::uuid4()->toString(),
             'name' => $request->name,
-            'book_id' => 'BK-' . $sum,
+            'author' => $request->author,
+            'book_id' => 'BK-' . $generateRandom,
             'slug' => Str::slug($request->name),
-            'quantity' => $request->quantity,
-            'description' => $request->description,
             'price' => $request->price,
+            'quantity' => $request->quantity,
+            'publisher' => $request->publisher,
+            'isbn' => $request->isbn,
+            'datePublish' => $request->datePublish,
+            'weight' => $request->weight,
+            'width' => $request->width,
+            'page' => $request->page,
+            'language' => $request->language,
+            'description' => $request->description,
             'category_id' => $request->category_id,
         ]);
-        // dd($request->all());
         if ($request->file('icon')) {
             $image = $request->file('icon');
             $image->storeAs('public/product', $image->hashName());
@@ -116,7 +131,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $product = Product::where('id','=', $id)->first();
+        // dd($product);
         $category = Category::all();
         return view('backend.product.edit', compact('product', 'category'));
     }
@@ -132,16 +148,31 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'description' => 'required',
             'price' => 'required|numeric',
-            'category_id' => 'required|numeric',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'quantity' => 'required|numeric',
+            'publisher' => 'required|string|max:255',
+            'isbn' => 'required|string|max:255',
+            'datePublish' => 'required|date',
+            'weight' => 'required|numeric',
+            'width' => 'required|numeric',
+            'page' => 'required|numeric',
+            'language' => 'required|string|max:255',
         ]);
         $product = Product::find($id);
         $product->update([
             'name' => $request->name,
+            'author' => $request->author,
             'description' => $request->description,
             'price' => $request->price,
+            'publisher' => $request->publisher,
+            'isbn' => $request->isbn,
+            'datePublish' => $request->datePublish,
+            'weight' => $request->weight,
+            'width' => $request->width,
+            'page' => $request->page,
+            'language' => $request->language,
             'category_id' => $request->category_id,
         ]);
         if ($request->file('icon')) {
@@ -153,9 +184,9 @@ class ProductController extends Controller
             ]);
         }
         if ($product) {
-            return redirect()->route('product.index')->with('success', 'Data berhasil diubah');
+            return redirect()->route('admin.product.index')->with('success', 'Data berhasil diubah');
         } else {
-            return redirect()->route('product.index')->with('error', 'Data gagal diubah');
+            return redirect()->route('admin.product.index')->with('error', 'Data gagal diubah');
         }
     }
 
@@ -173,9 +204,9 @@ class ProductController extends Controller
         }
         $product->delete();
         if ($product) {
-            return redirect()->route('product.index')->with('success', 'Data berhasil dihapus');
+            return redirect()->route('admin.product.index')->with('success', 'Data berhasil dihapus');
         } else {
-            return redirect()->route('product.index')->with('error', 'Data gagal dihapus');
+            return redirect()->route('admin.product.index')->with('error', 'Data gagal dihapus');
         }
     }
 }
