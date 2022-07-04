@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="{{route('transaction.index', $product->slug)}}" class="follow-btn"><i class="fa fa-shopping-cart"></i> Masukkan Keranjang</a>
+                                <a href="{{route('transaction.index', $product->slug)}}" class="follow-btn"><i class="fa fa-shopping-cart"></i>Langsung Beli</a>
                                 </div>
                             </div>
                         </div>
